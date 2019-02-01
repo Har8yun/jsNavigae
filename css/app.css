@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #eee;
+    font-family: 'Open Sans', sans-serif;;
+}
+
+.nav {
+    overflow: hidden;
+    background-color: #333;
+}
+
+.nav .nav-item, .nav .nav-item-divider {
+    display: block;
+    float: left;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.nav .nav-item-divider {
+    /*todo more style*/
+    font-weight: bold;
+    cursor: default;
+}
+
+/*.nav .nav-item:not(:first-child) {*/
+    /*border-left: 2px solid #111;*/
+/*}*/
+
+.nav .nav-item:hover {
+    background-color: #111;
+}
