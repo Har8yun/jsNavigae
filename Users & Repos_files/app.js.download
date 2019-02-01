@@ -7,7 +7,7 @@ import Route from './route.js';
     function init() {
         new Router([
             new Route('users', 'users.html', true),
-            new Route('singleUser', 'singleUser.html'),
+            new Route('singleUser', 'singleUser.html', true),
             new Route('repositories', 'repositories.html')
         ]);
     }
