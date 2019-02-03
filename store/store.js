@@ -13,12 +13,18 @@ class Store {
         return true;
     }
 
-    static getKey(key) {
+    static getKey(key, id) {
         if (!Store.isOk()) {
             return false;
         }
 
-        return JSON.parse( localStorage.getItem(key) );
+        let keyObject = JSON.parse( localStorage.getItem(key) )
+
+        if (!id) {
+            return keyObject;
+        }
+
+        return keyObject.find(it => it.id === id)
     }
 
     static remove(key) {

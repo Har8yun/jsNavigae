@@ -1,23 +1,25 @@
 'use strict';
 
+import Helper from './helper.js';
+
 class Route {
-    constructor(name, htmlName, defaultRoute) {
-        try{
-            if (!name || !htmlName) {
+    constructor(name, defaultRoute = false) {
+        try {
+            if (!name) {
                 throw 'error: name  and htmlName are required';
             }
 
-            this.name = name;
-            this.htmlName = htmlName;
+            this.name = Helper.capitalize(name);
             this.default = defaultRoute;
 
         } catch (e) {
             console.log(e);
         }
     }
-
+    
+    // Check if route exists.
     isActiveRoute(hashedPath) {
-        return hashedPath.replace('#', '') === this.name;
+        return Helper.capitalize(hashedPath.replace('#', '')) === this.name;
     }
 }
 

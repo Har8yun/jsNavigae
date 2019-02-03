@@ -6,9 +6,10 @@ import Route from './route.js';
 (function () {
     function init() {
         new Router([
-            new Route('users', 'users.html', true),
-            new Route('singleUser', 'singleUser.html'),
-            new Route('repositories', 'repositories.html')
+            new Route('users', true),
+            new Route('singleUser'),
+            new Route('repositories'),
+            new Route('notfound') //todo!!!
         ]);
     }
     init();

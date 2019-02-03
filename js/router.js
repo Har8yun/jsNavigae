@@ -2,6 +2,8 @@
 
 import Helper from './helper.js';
 
+import Controller from '../origin/controller.js'
+
 class Router {
 
     constructor(routes) {
@@ -12,55 +14,45 @@ class Router {
             }
 
             this.routes = routes;
-            this.rootElem = document.getElementById('app');
-            window.addEventListener('hashchange', () => { this.hashChanged(this, routes) });
-            this.hashChanged(this, routes);
+            this.hashChangedListener()
 
         } catch (e) {
             console.log(e);
         }
     }
 
-    hashChanged(scope, r) {
-        if (window.location.hash.length > 0) {
-            for(let i=0, length = r.length; i < length; i++){
-                let route = r[i];
-                let [hashName, hashParams] = window.location.hash
-                    .substr(1)
-                    .split('/');
+    hashChangedListener() {
+        window.addEventListener('hashchange', () => { this.hashChanged(this, this.routes) });
+            this.hashChanged(this, this.routes);
+    }
 
-                if (route.isActiveRoute(hashName)) {
-                    scope.goToRoute(route.htmlName, Helper.capitalize(hashName),  hashParams);
-                }
-            }
+    hashChanged(scope, r) {
+        let windowHash = window.location.hash;
+        let [hashName, hashParams] = windowHash
+            .substr(1)
+            .split('/');
+
+        let currentRoute;
+
+        if (windowHash.length > 0) {
+            currentRoute = r.find(item => item.isActiveRoute(hashName));
         } else {
-            for(let i=0, length = r.length; i < length; i++){
-                let route = r[i];
-                if (route.default) {
-                    scope.goToRoute(route.htmlName);
-                }
-            }
+            // Go to home route
+            currentRoute = r.find(item => item.default === true);
+        }
+
+        if (currentRoute) {
+            scope.goToRoute(currentRoute.name,  hashParams);
+        }
+        else {
+            /*todo - make not found route*/
+            alert('You are lost!')
         }
     }
 
-    goToRoute(htmlName, className, params) {
-        const url = `views/${htmlName}`;
-
-        // XMLHttpRequest may be done by fetch.
-        let xhttp = new XMLHttpRequest();
-        xhttp.open('GET', url, true);
-        xhttp.onreadystatechange = () => {
-            if(xhttp.readyState === 4 && xhttp.status === 200) {
-                this.rootElem.innerHTML = xhttp.responseText;
-
-                Helper.makePage(className);
-
-                // this.addEvent();
-            }
-        };
-        xhttp.send();
+    goToRoute(className, params) {
+        Helper.makePage(className, params);
     }
-
 }
 
 export default Router;
