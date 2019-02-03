@@ -1,6 +1,6 @@
 'use strict';
 
-import Helper from './helper.js';
+import Helper from '../helpers/helper.js';
 
 class Route {
     constructor(name, defaultRoute = false) {

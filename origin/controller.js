@@ -1,4 +1,3 @@
-
 class Controller {
 	constructor (...props) {
 		/*todo controller logic*/

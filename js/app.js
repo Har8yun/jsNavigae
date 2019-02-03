@@ -1,7 +1,7 @@
 'use strict';
 
-import Router from './router.js';
-import Route from './route.js';
+import Router from '../router/router.js';
+import Route from '../router/route.js';
 
 (function () {
     function init() {
@@ -9,7 +9,8 @@ import Route from './route.js';
             new Route('users', true),
             new Route('singleUser'),
             new Route('repositories'),
-            new Route('notfound') //todo!!!
+            //todo!!!
+            new Route('notfound') 
         ]);
     }
     init();

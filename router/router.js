@@ -1,8 +1,6 @@
 'use strict';
 
-import Helper from './helper.js';
-
-import Controller from '../origin/controller.js'
+import Helper from '../helpers/helper.js';
 
 class Router {
 

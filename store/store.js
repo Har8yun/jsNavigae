@@ -9,16 +9,23 @@ class Store {
             return false;
         }
 
+        if (typeof value !== 'string') {
+            value = JSON.stringify(value);
+        }
+
         localStorage.setItem(key, value);
         return true;
     }
 
-    static getKey(key, id) {
+    static getKey(key, id=false, parse = true) {
         if (!Store.isOk()) {
             return false;
         }
-
-        let keyObject = JSON.parse( localStorage.getItem(key) )
+        
+        let keyObject =localStorage.getItem(key);
+        if (parse) {
+            keyObject = JSON.parse(keyObject);
+        }
 
         if (!id) {
             return keyObject;

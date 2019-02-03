@@ -1,0 +1,21 @@
+{
+  "name": "jsnavigate",
+  "version": "1.0.0",
+  "description": "simple js navigate",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "static-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Har8yun/jsNavigae.git"
+  },
+  "author": "Harut",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Har8yun/jsNavigae/issues"
+  },
+  "homepage": "https://github.com/Har8yun/jsNavigae#readme",
+  "devDependencies": {}
+}
